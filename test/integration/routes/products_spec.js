@@ -6,8 +6,17 @@ describe('Routes: Products', () => {
     , description : 'product description'
     , price : 100
   }
+  
+  let request
+  before(() => {
+    return setupApp()
+      .then(app => {
+        request = supertest(app)
+      })
+  })
 
   describe('GET /products', () => {
+
     it('should return a list of products', done => {
         request
           .get('/products')
